@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Form, Button, Select } from 'antd';
+import { Form, Button, Select, Card } from 'antd';
 import axios from "axios";
 import { apiUrl, apiGetColNames } from './constants';
 
@@ -73,93 +73,108 @@ function App() {
     getSetColValues();
   }, []);
   return (
-    <Form>
-      <Form.Item
-        name="community_area"
-        label="Community Area"
-        rules={[
-          {
-            required: true,
-            message: 'Please select the community area',
-          },
-        ]}
-      >
-        <Select showSearch>
-          {communityAreaField.map(val =>
-            <Option value={val}>{val}</Option>
-          )}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        label="Day of the week"
-        name="day"
-        rules={[
-          {
-            required: true,
-            message: 'Please select the day'
-          },
-        ]}
-      >
-        <Select showSearch>
-          {dayField.map(val =>
-            <Option value={dayMap[val]}>{dayMap[val]}</Option>
-          )}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        label="Month"
-        name="month"
-        rules={[
-          {
-            required: true,
-            message: 'Please select the month'
-          },
-        ]}
-      >
-        <Select showSearch>
-          {monthField.map(val =>
-            <Option value={monthMap[val]}>{monthMap[val]}</Option>
-          )}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        label="Wether the crime will be domestic or not"
-        name="domestic"
-        rules={[
-          {
-            required: true,
-            message: 'Please select wether the crime is domestic or not'
-          },
-        ]}
-      >
-        <Select showSearch>
-          {domesticField.map(val =>
-            <Option value={val}>{val}</Option>
-          )}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        label="Type of the crime"
-        name="primary_type"
-        rules={[
-          {
-            required: true,
-            message: 'Please select the type of the crime'
-          },
-        ]}
-      >
-        <Select showSearch>
-          {primaryTypeField.map(val =>
-            <Option value={val}>{val}</Option>
-          )}
-        </Select>
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+    <div style={{
+      alignItems: "center",
+      justifyContent: "center",
+      display: "flex"
+    }}>
+      <Card style={{
+        // backgroundColor: "#d9d9d9",
+        backgroundColor: "#ebf8f2",
+        width: "80vh",
+      }}>
+        <Form
+          onFinish={val => console.log(val)}
+          onFinishFailed={err => console.log(err)}
+        >
+          <Form.Item
+            name="community_area"
+            label="Community Area"
+            rules={[
+              {
+                required: true,
+                message: 'Please select the community area',
+              },
+            ]}
+          >
+            <Select showSearch>
+              {communityAreaField.map(val =>
+                <Option value={val}>{val}</Option>
+              )}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            label="Day of the week"
+            name="day"
+            rules={[
+              {
+                required: true,
+                message: 'Please select the day'
+              },
+            ]}
+          >
+            <Select showSearch>
+              {dayField.map(val =>
+                <Option value={dayMap[val]}>{dayMap[val]}</Option>
+              )}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            label="Month"
+            name="month"
+            rules={[
+              {
+                required: true,
+                message: 'Please select the month'
+              },
+            ]}
+          >
+            <Select showSearch>
+              {monthField.map(val =>
+                <Option value={monthMap[val]}>{monthMap[val]}</Option>
+              )}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            label="Wether the crime will be domestic or not"
+            name="domestic"
+            rules={[
+              {
+                required: true,
+                message: 'Please select wether the crime is domestic or not'
+              },
+            ]}
+          >
+            <Select showSearch>
+              {domesticField.map(val =>
+                <Option value={val}>{val}</Option>
+              )}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            label="Type of the crime"
+            name="primary_type"
+            rules={[
+              {
+                required: true,
+                message: 'Please select the type of the crime'
+              },
+            ]}
+          >
+            <Select showSearch>
+              {primaryTypeField.map(val =>
+                <Option value={val}>{val}</Option>
+              )}
+            </Select>
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
+    </div>
   );
 }
 
