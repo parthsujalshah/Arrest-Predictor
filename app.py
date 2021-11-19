@@ -55,5 +55,30 @@ def home():
     pred = model.predict(df)
     return jsonify({'will_be_arrested': int(pred[0])})
 
+
+@app.route('/getvalues', methods=['GET'])
+def getvalues():
+    f = open('cols.json')
+    data = json.load(f)
+    res = {
+        "primary_type": [],
+        "community_area": [],
+        "day": [],
+        "month": [],
+        "domestic": []
+    }
+    for i in data['column_names']:
+        if 'Primary Type' in i:
+            res['primary_type'].append(i.split('_')[1])
+        elif 'Community Area' in i:
+            res['community_area'].append(i.split('_')[1])
+        elif 'Day' in i:
+            res['day'].append(i.split('_')[1])
+        elif 'Month' in i:
+            res['month'].append(i.split('_')[1])
+        elif 'Domestic' in i:
+            res['domestic'].append(i.split('_')[1])
+    return jsonify(res)
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8000)
