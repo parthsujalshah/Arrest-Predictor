@@ -107,7 +107,7 @@ function App() {
   };
   return (
     <div>
-      <Modal title="Basic Modal" visible={isModalVisible} onOk={() => {
+      <Modal title="" visible={isModalVisible} onOk={() => {
         setIsModalVisible(false);
       }} onCancel={() => {
         setIsModalVisible(false);
