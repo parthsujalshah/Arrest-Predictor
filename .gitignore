@@ -2,4 +2,4 @@ backendenv
 jupenv
 data.csv
 ./frontend/node_modules/
-frontend/build
+frontend/build/
