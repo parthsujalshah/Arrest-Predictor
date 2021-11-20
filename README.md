@@ -16,7 +16,7 @@
 Arresting of criminals not only depend upon the criminal, but also depend upon other factors which influence the allotments of the police force. This application helps the police department by predicting wether the criminal will be arrested or not, based on the previous experience, considering certain circumstances.
 
 ### FLOW CHART OF METHODOLOGY
-![Methodology](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/flow.jpg)
+![Methodology](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/flow.png)
 
 ### USING THE APPLICATION
 - The user fills a form displayed on the screen.
