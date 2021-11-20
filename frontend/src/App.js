@@ -1,11 +1,12 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Form, Button, Select, Card, Affix, PageHeader, Modal, Spin } from 'antd';
+import { Form, Button, Select, Card, Affix, PageHeader, Modal, Spin, Image } from 'antd';
 import axios from "axios";
 import { apiUrl, apiGetColNames } from './constants';
 import Lottie from 'react-lottie';
 import * as animationArrested from './lottiefiles/arrested.json';
 import * as animationNotArrested from './lottiefiles/not-arrested.json';
+import Background from './assets/images/community_areas.png';
 
 const { Option } = Select;
 
@@ -21,9 +22,10 @@ function App() {
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [isStopped, setIsStopped] = React.useState(false);
   const [isPaused, setIsPaused] = React.useState(false);
+  const [communityAreaSelected, setCommunityAreaSelected] = React.useState('');
 
   const defaultArrested = {
-    loop: false,
+    loop: true,
     autoplay: true,
     animationData: animationArrested.default,
     rendererSettings: {
@@ -31,7 +33,7 @@ function App() {
     }
   };
   const defaultNotArrested = {
-    loop: false,
+    loop: true,
     autoplay: true,
     animationData: animationNotArrested.default,
     rendererSettings: {
@@ -264,6 +266,11 @@ function App() {
             </Form.Item>
           </Form>
         </Card>
+        <div style={{ marginLeft: 20 }} />
+        <Image
+          preview={false}
+          src={Background}
+        />
       </div>
     </div>
   );
