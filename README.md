@@ -65,13 +65,13 @@ GridSearchCV is used to optimize the Hyperparameters.
 DecisionTreeClassifier is being used
 
 ### ACCURACY
-![Accuracy](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/accuracy.jpeg)
+![Accuracy](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/accuracy.png)
 
 ### CONFUSION MATRIX
-![Confusion Matrix](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/confusion_matrix.jpeg)
+![Confusion Matrix](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/confusion_matrix.png)
 
 ### CLASSIFICATION REPORT
-![Classification Report](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/classification_report.jpeg)
+![Classification Report](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/classification_report.png)
 
 ### RUNNING THE APPLICATION LOCALLY
 - Install python and node
