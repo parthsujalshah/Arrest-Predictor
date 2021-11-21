@@ -5,12 +5,12 @@
 [Live Link](https://arrest-predictor.netlify.app/)
 
 ### INPUT OUTUT SCREENSHOTS
-![sc1](https://github.com/parthsujalshah/Employee-Turnover/blob/main/images/Screenshot_110.png)
-![sc2](https://github.com/parthsujalshah/Employee-Turnover/blob/main/images/Screenshot_111.png)
-![sc2](https://github.com/parthsujalshah/Employee-Turnover/blob/main/images/Screenshot_112.png)
-![sc4](https://github.com/parthsujalshah/Employee-Turnover/blob/main/images/Screenshot_114.png)
-![sc5](https://github.com/parthsujalshah/Employee-Turnover/blob/main/images/Screenshot_115.png)
-![sc6](https://github.com/parthsujalshah/Employee-Turnover/blob/main/images/Screenshot_116.png)
+![sc1](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/Screenshot_110.png)
+![sc2](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/Screenshot_111.png)
+![sc2](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/Screenshot_112.png)
+![sc4](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/Screenshot_113.png)
+![sc4](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/Screenshot_114.png)
+![sc5](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/Screenshot_115.png)
 
 ### INTRODUCTION
 Arresting of criminals not only depend upon the criminal, but also depend upon other factors which influence the allotments of the police force. This application helps the police department by predicting wether the criminals of the crime in a particular area, will be arrested or not, based on the previous experience, considering certain circumstances.
