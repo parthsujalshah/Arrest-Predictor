@@ -17,6 +17,7 @@ Arresting of criminals not only depend upon the criminal, but also depend upon o
 
 ### FLOW CHART OF METHODOLOGY
 ![Methodology](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/flow.png)
+![Methodology_Model_Training](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/model_training.png)
 
 ### USING THE APPLICATION
 - The user fills a form displayed on the screen.
@@ -60,9 +61,12 @@ A CSV file having the following columns:
 - **Optimization of Hyperparameters**
 GridSearchCV is used to optimize the Hyperparameters.
 
+- **Hybrid Methodology**
+3 machine learning models: Logistic Regression, Decision Tree Classifier and Gaussian Naive Bayes are used, and hard voting is done for the prediciton.
+
 
 ### Model Generation
-DecisionTreeClassifier is being used
+DecisionTreeClassifier, Logistic Regression and Gaussian Naive Bayes are used
 
 ### ACCURACY
 ![Accuracy](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/accuracy.png)
