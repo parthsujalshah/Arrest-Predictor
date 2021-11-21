@@ -2,7 +2,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Form, Button, Select, Card, Affix, PageHeader, Modal, Spin, Image } from 'antd';
 import axios from "axios";
-import { apiUrl, apiGetColNames } from './constants';
+import { apiUrl, apiGetColNames, fields } from './constants';
 import Lottie from 'react-lottie';
 import * as animationArrested from './lottiefiles/arrested.json';
 import * as animationNotArrested from './lottiefiles/not-arrested.json';
@@ -22,7 +22,7 @@ function App() {
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [isStopped, setIsStopped] = React.useState(false);
   const [isPaused, setIsPaused] = React.useState(false);
-  const [communityAreaSelected, setCommunityAreaSelected] = React.useState('');
+  const [cardLoading, setCardLoading] = React.useState(true);
 
   const defaultArrested = {
     loop: true,
@@ -89,13 +89,16 @@ function App() {
   };
 
   React.useEffect(() => {
-    const getSetColValues = async () => {
-      const res1 = await axios.get(`${apiUrl}/${apiGetColNames}`);
-      setCommunityAreaField(res1.data['community_area'])
-      setDayField(res1.data['day'])
-      setDomesticField(res1.data['domestic'])
-      setMonthField(res1.data['month'])
-      setPrimaryTypeField(res1.data['primary_type'])
+    const getSetColValues = () => {
+      setCardLoading(true);
+      const res1 = fields;
+      console.log(res1);
+      setCommunityAreaField(res1['community_area'])
+      setDayField(res1['day'])
+      setDomesticField(res1['domestic'])
+      setMonthField(res1['month'])
+      setPrimaryTypeField(res1['primary_type'])
+      setCardLoading(false);
     }
     getSetColValues();
   }, []);
@@ -154,117 +157,124 @@ function App() {
           backgroundColor: "#f0f0f0",
           width: "80vh",
         }}>
-          <Form
-            {...layout}
-            onFinish={async val => {
-              const modelInputData = {
-                'community_area': val['community_area'],
-                'day': dayReverseMap[val['day']],
-                'month': monthReverseMap[val['month']],
-                'domestic': val['domestic'],
-                'primary_type': val['primary_type'],
-              };
-              setModalLoading(true);
-              setIsModalVisible(true);
-              const res = await axios.post(apiUrl, modelInputData);
-              setArrested(res.data.arrested);
-              setModalLoading(false);
-            }}
-            onFinishFailed={err => console.log(err)}
-          >
-            <Form.Item
-              name="community_area"
-              label="Community Area"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please select the community area',
-                },
-              ]}
-            >
-              <Select showSearch>
-                {communityAreaField.map(val =>
-                  <Option value={val}>{val}</Option>
-                )}
-              </Select>
-            </Form.Item>
-            <Form.Item
-              label="Day of the week"
-              name="day"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please select the day'
-                },
-              ]}
-            >
-              <Select showSearch>
-                {dayField.map(val =>
-                  <Option value={dayMap[val]}>{dayMap[val]}</Option>
-                )}
-              </Select>
-            </Form.Item>
-            <Form.Item
-              label="Month"
-              name="month"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please select the month'
-                },
-              ]}
-            >
-              <Select showSearch>
-                {monthField.map(val =>
-                  <Option value={monthMap[val]}>{monthMap[val]}</Option>
-                )}
-              </Select>
-            </Form.Item>
-            <Form.Item
-              label="Domestic Crime"
-              name="domestic"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please select wether the crime is domestic or not'
-                },
-              ]}
-            >
-              <Select showSearch>
-                {domesticField.map(val =>
-                  <Option value={val}>{val}</Option>
-                )}
-              </Select>
-            </Form.Item>
-            <Form.Item
-              label="Type of the crime"
-              name="primary_type"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please select the type of the crime'
-                },
-              ]}
-            >
-              <Select showSearch>
-                {primaryTypeField.map(val =>
-                  <Option value={val}>{val}</Option>
-                )}
-              </Select>
-            </Form.Item>
-            <Form.Item>
-              <div style={{
-                display: "flex",
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center"
-              }}>
-                <Button type="primary" htmlType="submit">
-                  Submit
-                </Button>
-              </div>
-            </Form.Item>
-          </Form>
+          {
+            cardLoading
+              ?
+              <Spin size="large" />
+              :
+              <Form
+                {...layout}
+                onFinish={async val => {
+                  console.log(val)
+                  const modelInputData = {
+                    'community_area': val['community_area'],
+                    'day': dayReverseMap[val['day']],
+                    'month': monthReverseMap[val['month']],
+                    'domestic': val['domestic'],
+                    'primary_type': val['primary_type'],
+                  };
+                  setModalLoading(true);
+                  setIsModalVisible(true);
+                  const res = await axios.post(apiUrl, modelInputData);
+                  setArrested(res.data.arrested);
+                  setModalLoading(false);
+                }}
+                onFinishFailed={err => console.log(err)}
+              >
+                <Form.Item
+                  name="community_area"
+                  label="Community Area"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please select the community area',
+                    },
+                  ]}
+                >
+                  <Select showSearch>
+                    {communityAreaField.map(val =>
+                      <Option value={val}>{val}</Option>
+                    )}
+                  </Select>
+                </Form.Item>
+                <Form.Item
+                  label="Day of the week"
+                  name="day"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please select the day'
+                    },
+                  ]}
+                >
+                  <Select showSearch>
+                    {dayField.map(val =>
+                      <Option value={dayMap[val]}>{dayMap[val]}</Option>
+                    )}
+                  </Select>
+                </Form.Item>
+                <Form.Item
+                  label="Month"
+                  name="month"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please select the month'
+                    },
+                  ]}
+                >
+                  <Select showSearch>
+                    {monthField.map(val =>
+                      <Option value={monthMap[val]}>{monthMap[val]}</Option>
+                    )}
+                  </Select>
+                </Form.Item>
+                <Form.Item
+                  label="Domestic Crime"
+                  name="domestic"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please select wether the crime is domestic or not'
+                    },
+                  ]}
+                >
+                  <Select showSearch>
+                    {domesticField.map(val =>
+                      <Option value={val}>{val}</Option>
+                    )}
+                  </Select>
+                </Form.Item>
+                <Form.Item
+                  label="Type of the crime"
+                  name="primary_type"
+                  rules={[
+                    {
+                      required: true,
+                      message: 'Please select the type of the crime'
+                    },
+                  ]}
+                >
+                  <Select showSearch>
+                    {primaryTypeField.map(val =>
+                      <Option value={val}>{val}</Option>
+                    )}
+                  </Select>
+                </Form.Item>
+                <Form.Item>
+                  <div style={{
+                    display: "flex",
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}>
+                    <Button type="primary" htmlType="submit">
+                      Submit
+                    </Button>
+                  </div>
+                </Form.Item>
+              </Form>
+          }
         </Card>
         <div style={{ marginLeft: 20 }} />
         <Image
