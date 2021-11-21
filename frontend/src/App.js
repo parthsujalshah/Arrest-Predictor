@@ -175,8 +175,12 @@ function App() {
                   };
                   setModalLoading(true);
                   setIsModalVisible(true);
-                  const res = await axios.post(apiUrl, modelInputData);
-                  setArrested(res.data.arrested);
+                  try {
+                    const res = await axios.post('apiUrl', modelInputData);
+                    setArrested(Boolean(res.data.arrested));
+                  } catch {
+                    setArrested(false);
+                  }
                   setModalLoading(false);
                 }}
                 onFinishFailed={err => console.log(err)}
