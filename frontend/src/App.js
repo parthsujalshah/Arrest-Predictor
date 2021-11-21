@@ -176,7 +176,7 @@ function App() {
                   setModalLoading(true);
                   setIsModalVisible(true);
                   try {
-                    const res = await axios.post('apiUrl', modelInputData);
+                    const res = await axios.post(apiUrl, modelInputData);
                     setArrested(Boolean(res.data.arrested));
                   } catch {
                     setArrested(false);
