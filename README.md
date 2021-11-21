@@ -13,11 +13,12 @@
 ![sc6](https://github.com/parthsujalshah/Employee-Turnover/blob/main/images/Screenshot_116.png) -->
 
 ### INTRODUCTION
-Arresting of criminals not only depend upon the criminal, but also depend upon other factors which influence the allotments of the police force. This application helps the police department by predicting wether the criminal will be arrested or not, based on the previous experience, considering certain circumstances.
+Arresting of criminals not only depend upon the criminal, but also depend upon other factors which influence the allotments of the police force. This application helps the police department by predicting wether the criminals of the crime in a particular area, will be arrested or not, based on the previous experience, considering certain circumstances.
 
 ### FLOW CHART OF METHODOLOGY
 ![Methodology](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/flow.png)
 ![Methodology_Model_Training](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/model_training.png)
+![Methodology_Model_Pred](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/model_pred.png)
 
 ### USING THE APPLICATION
 - The user fills a form displayed on the screen.
@@ -50,7 +51,7 @@ A CSV file having the following columns:
 - Longitude
 - Location
 
-### PREPROCESSING
+### DATA CLEANING
 - Dropping Null value rows
 - Keeping the first of all the duplicate entries
 - Creating separate columns for the day of the week and the month
@@ -67,6 +68,16 @@ GridSearchCV is used to optimize the Hyperparameters.
 
 ### Model Generation
 DecisionTreeClassifier, Logistic Regression and Gaussian Naive Bayes are used
+
+### Working
+1. The data arrives in the backend from frontend.
+2. The data is fed into 3 models for prediction:
+    a. Logistic Regression Model
+    b. Decision Tree Classifier
+    c. Gaussian Naive Bayes
+3. The output from models will be 0 or 1
+4. The majority of the output is considered by Voting Classifier
+5. This output is sent to frontend
 
 ### ACCURACY
 ![Accuracy](https://github.com/parthsujalshah/Arrest-Predictor/blob/main/images/accuracy.png)
