@@ -1,4 +1,5 @@
 backendenv
+env/
 jupenv
 data.csv
 ./frontend/node_modules/
