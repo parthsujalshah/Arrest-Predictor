@@ -1,15 +1,14 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 import joblib
 import pandas as pd
 import json
 
 app = Flask(__name__)
-CORS(app, support_credentials=True)
+CORS(app)
 
 
 @app.route('/', methods=['POST'])
-@cross_origin()
 def home():
     build_dict = {}
     f = open('cols.json')
@@ -55,7 +54,6 @@ def home():
 
 
 @app.route('/getvalues', methods=['GET'])
-@cross_origin()
 def getvalues():
     f = open('cols.json')
     data = json.load(f)
