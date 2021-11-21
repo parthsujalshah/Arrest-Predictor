@@ -15,7 +15,6 @@ def home():
     build_dict = {}
     f = open('cols.json')
     data = json.load(f)
-    print(request.json)
 
     pt = request.json.get('primary_type')
     ca = request.json.get('community_area')
