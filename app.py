@@ -5,7 +5,7 @@ import pandas as pd
 import json
 
 app = Flask(__name__)
-# CORS(app, support_credentials=True)
+CORS(app, support_credentials=True)
 
 
 @app.route('/', methods=['POST'])
